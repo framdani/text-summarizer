@@ -10,7 +10,7 @@ Before running text-summarizer. Make sure to run the following command to instal
 
 To use text summarizer, simply run :
 
-`pyhton3 main.py`
+`python3 main.py`
 
 ## Note
 
