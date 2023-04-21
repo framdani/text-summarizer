@@ -16,4 +16,5 @@ To use text summarizer, simply run :
 
 - First an output.pdf will be generated that contain the text without punctutations. Then the output will be printed in the terminal output. Otherwise, you can run `python3 main.py > file.txt` to save the summary in a text file.
 - If you want to test an other pdf file, you can update the `inputFilePath` in the `main.py` file.
+- This tool is not perfect and it could be slower, due to the specified maximum sequence length for this model (585 > 512).
 
