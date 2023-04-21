@@ -18,17 +18,17 @@ try:
     ############################################################
     # Open the file and remove punctuation => streaming approach because text is very large
     #############################################################
-    pdfFileObj = open ("mercedes.pdf", "rb")
-    pdfReader = PyPDF2.PdfReader(pdfFileObj)
+
     # Create a pdf writer
     pdf_writer = PyPDF2.PdfWriter()
 
 
     for page_number in range(len(pdfReader.pages)):
-         # extract the text form the page
+         # extract the text from the page
         pageObj=pdfReader.pages[page_number]
         text = pageObj.extract_text()
-         # Split the text into chunks
+         # Split the text into chunks instead of loading the entire
+         # text once in the memory due to memory contraints
         for j in range(0, len(text), chunk_size):
             # remove punctuation from the chunk using regex
             cleaned_chunk = re.sub(r'[^\w\s]', '',text[j:j+chunk_size])
@@ -52,7 +52,7 @@ try:
 
         text = pageObj.extract_text()
 
-        # split the text into smaller chunks
+        # split the text into smaller chunks to avoid self index out of range
         chunks = []
         for j in range(0, len(text), max_length):
             chunks.append(text[j:j+max_length])
